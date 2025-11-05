@@ -1,0 +1,94 @@
+[h1]ACE Damage Modifier[/h1]
+
+A lethal combat enhancement mod that works seamlessly with ACE Medical to create a more realistic and deadly battlefield experience.
+
+[h2]Key Features[/h2]
+
+[b]🎯 Headshots Matter[/b]
+One hit to the head = instant death. Any bullet that strikes the head or face will immediately trigger cardiac arrest through ACE Medical.
+
+[b]🫀 Cumulative Chest Damage[/b]
+Three hits to the chest or torso = death. The mod silently tracks damage to your torso - after the third hit, you're down. No second chances.
+
+[b]💥 Realistic Explosion Lethality[/b]
+Explosions now have distance-based lethality that scales with their size:
+[list]
+[*]Small explosions (grenades): ~5m lethal radius
+[*]Medium explosions (RPG, small rockets): ~10m lethal radius
+[*]Large explosions (bombs, artillery): ~20m lethal radius
+[/list]
+
+[h2]Why This Mod?[/h2]
+
+ACE Medical is fantastic, but sometimes you want combat to be more lethal and decisive. This mod enhances ACE's damage system without replacing it, making firefights faster and more intense.
+
+[b]Silent Operation[/b] - No notifications, no UI clutter. The mod works invisibly in the background for maximum immersion.
+
+[b]Full ACE Integration[/b] - Uses ACE Medical's cardiac arrest system, compatible with all ACE medical settings and features.
+
+[h2]Requirements[/h2]
+
+[list]
+[*][url=https://steamcommunity.com/workshop/filedetails/?id=463939057]ACE[/url] (Required)
+[*][url=https://steamcommunity.com/workshop/filedetails/?id=450814997]CBA_A3[/url] (Required)
+[/list]
+
+[h2]Installation[/h2]
+
+1. Subscribe to this mod
+2. Subscribe to ACE and CBA_A3 if you haven't already
+3. Launch Arma 3 and enable all three mods
+4. Make sure load order is: CBA → ACE → ACE Damage Modifier
+
+[h2]How It Works[/h2]
+
+The mod uses event handlers to track damage to specific body parts. When lethal thresholds are reached, it triggers ACE Medical's cardiac arrest state. All tracking is done per-player and resets on respawn.
+
+[b]Technical Details:[/b]
+[list]
+[*]Uses HandleDamage event for bullet/projectile tracking
+[*]Uses Explosion event for blast damage
+[*]Hit counters stored in player variables
+[*]Fully compatible with ACE Advanced Medical
+[/list]
+
+[h2]Compatibility[/h2]
+
+✅ Works with ACE Medical and Advanced Medical
+✅ Compatible with most weapon and gameplay mods
+✅ Works in singleplayer and multiplayer
+✅ Server-side compatible (clients should install for best experience)
+⚠️ May conflict with other damage modification mods
+
+[h2]Configuration[/h2]
+
+Currently uses hardcoded values:
+[list]
+[*]3 chest hits = death
+[*]1 head hit = death
+[*]Explosion lethal ranges: 5m/10m/20m
+[/list]
+
+For custom values, edit the source files (see GitHub).
+
+[h2]Credits[/h2]
+
+[list]
+[*]ACE Team for ACE Medical
+[*]CBA Team for Community Base Addons
+[/list]
+
+[h2]Links[/h2]
+
+[url=GITHUB_URL_HERE]GitHub Repository[/url] - Source code and development
+[url=GITHUB_URL_HERE/issues]Report Issues[/url] - Bug reports and feature requests
+
+[h2]Support[/h2]
+
+If you encounter issues:
+1. Make sure ACE and CBA are up to date
+2. Check load order (CBA → ACE → This mod)
+3. Look for errors in your .rpt file
+4. Report issues on GitHub with your .rpt file
+
+Enjoy more lethal combat!

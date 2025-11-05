@@ -11,9 +11,9 @@ A custom Arma 3 mod that modifies ACE Medical damage behavior to create a more l
 
 ### 🫀 Chest Shots
 - **3 hits to the chest/torso = death**
-- Tracks cumulative chest damage
-- Shows hit counter notifications in-game
+- Tracks cumulative chest damage silently
 - Triggers cardiac arrest after 3rd hit
+- No in-game notifications (clean gameplay)
 
 ### 💥 Explosion Damage
 Distance-based lethality that varies by explosion size:
@@ -31,17 +31,26 @@ Distance-based lethality that varies by explosion size:
 
 ## Installation
 
-### Method 1: Manual Installation
-1. Download or clone this repository
-2. Copy the `@ace_damage_mod` folder to your Arma 3 directory
-3. Add `-mod=@ace_damage_mod` to your launch parameters
+### Method 1: Steam Workshop (Recommended - Coming Soon)
+1. Subscribe to the mod on Steam Workshop
+2. Arma 3 will automatically download and install it
+3. Enable the mod in Arma 3 Launcher
 4. Make sure ACE and CBA are loaded before this mod
 
-### Method 2: Development/Testing
+### Method 2: Manual Installation
+1. Download the `@ACE_Damage_Modifier` folder from releases
+2. Copy it to your Arma 3 directory
+3. Add `-mod=@ACE_Damage_Modifier` to your launch parameters
+4. Make sure ACE and CBA are loaded before this mod
+
+### Method 3: Development/Testing
 1. Copy the `addons` folder to your Arma 3 installation
 2. Use PBO Manager or similar tool to pack the addon:
    - Pack `addons/ace_damage_mod` into `ace_damage_mod.pbo`
 3. Place the PBO in your Arma 3 `addons` folder or create a mod folder
+
+### Uploading to Steam Workshop
+See `@ACE_Damage_Modifier/WORKSHOP_GUIDE.txt` for detailed instructions on uploading this mod to Steam Workshop.
 
 ## How It Works
 
@@ -55,12 +64,7 @@ The mod uses event handlers to track damage to specific body parts:
 - Uses `ace_medical_fnc_setCardiacArrestState` for lethal hits
 - Compatible with ACE medical settings
 - Works with ACE's advanced medical system
-
-### In-Game Notifications
-- System chat messages show when hits are registered
-- Chest hit counter (1/3, 2/3, 3/3)
-- Explosion size and distance notifications
-- Fatal hit confirmations
+- Silent operation - no in-game notifications for clean immersive gameplay
 
 ## Configuration
 
@@ -142,6 +146,13 @@ Feel free to submit issues or pull requests for improvements.
 
 This mod is provided as-is for the Arma 3 community.
 
+## Steam Workshop Upload
+
+This mod is ready for Steam Workshop! See the complete upload guide:
+- `@ACE_Damage_Modifier/WORKSHOP_GUIDE.txt` - Step-by-step upload instructions
+- `@ACE_Damage_Modifier/` - Properly structured mod folder
+- `@ACE_Damage_Modifier/meta.cpp` - Steam Workshop metadata
+
 ## Version History
 
 ### 1.0.0 (Initial Release)
@@ -149,3 +160,4 @@ This mod is provided as-is for the Arma 3 community.
 - Chest damage tracking (3 hits)
 - Distance-based explosion lethality
 - ACE Medical integration
+- Silent operation (no notifications)
