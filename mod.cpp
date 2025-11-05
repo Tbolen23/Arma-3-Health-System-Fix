@@ -1,0 +1,12 @@
+name = "ACE Damage Modifier";
+picture = "";
+actionName = "Website";
+action = "";
+description = "Custom damage system for ACE Medical: 3 chest hits = kill, 1 head hit = kill, distance-based explosion lethality";
+logo = "";
+logoOver = "";
+tooltip = "ACE Damage Modifier";
+tooltipOwned = "ACE Damage Modifier Owned";
+overview = "Modifies ACE Medical damage to create a more lethal combat environment with specific hit requirements.";
+author = "Custom";
+overviewPicture = "";
