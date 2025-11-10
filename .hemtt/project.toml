@@ -1,0 +1,11 @@
+name = "ACE Damage Modifier"
+prefix = "ace_dmg"
+mainprefix = "z"
+author = "Tbolen23"
+version = "2.0.1"
+
+[hemtt.release]
+sign = false
+
+[hemtt.build]
+# Build configuration
