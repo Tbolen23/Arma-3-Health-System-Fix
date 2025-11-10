@@ -167,7 +167,14 @@ This mod is ready for Steam Workshop! See the complete upload guide:
 
 ## Version History
 
-### 2.0.0 (Current)
+### 2.0.1 (Current)
+- **CRITICAL FIX:** Updated file paths to match Arma 3 namespace standards
+- Fixed `$PBOPREFIX$` to use `z\ace_dmg\addons\ace_damage_mod` format
+- Fixed config.cpp file paths to `\z\ace_dmg\addons\ace_damage_mod\functions`
+- Follows proven structure from LambsDanger and other major Arma 3 mods
+- Fixes "file not found" and "unexpected modDIR" errors
+
+### 2.0.0
 - Separate damage thresholds for AI vs Players
 - AI: 1 head hit, 3 chest/limb hits
 - Players: 2 head hits, 6 chest/leg hits
