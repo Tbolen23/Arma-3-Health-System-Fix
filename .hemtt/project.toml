@@ -6,19 +6,17 @@ author = "Tbolen23"
 [version]
 major = 2
 minor = 0
-patch = 1
-build = 0
+patch = 2
 
 [files]
 include = [
     "mod.cpp",
-    "README.txt",
-    "*.md"
+    "README.md"
 ]
 
 [hemtt.release]
 sign = false
-folder = "ACE_Damage_Modifier"
+folder = "@ACE_Damage_Modifier"
 
 [hemtt.build]
 # Build configuration

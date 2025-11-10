@@ -1,12 +1,12 @@
 /*
- * Author: Custom
+ * Author: Tbolen23
  * Handles explosion damage with distance-based lethality
- * Smaller explosions need closer range, larger ones kill from further away
+ * Same for both AI and players
  *
  * Arguments:
  * 0: Unit <OBJECT>
  * 1: Damage <NUMBER>
- * 2: Distance <NUMBER> - Distance from explosion center
+ * 2: Distance <NUMBER> - Distance from explosion
  *
  * Return Value:
  * None
@@ -16,51 +16,31 @@
 
 params ["_unit", "_damage", "_distance"];
 
+// Only process significant damage
+if (_damage < 0.1) exitWith {};
+
 // Don't process if unit is already dead
 if (!alive _unit) exitWith {};
 
-// Explosion damage thresholds based on distance
-// Small explosions (grenades): ~5m lethal range
-// Medium explosions (RPG, small rockets): ~10m lethal range
-// Large explosions (bombs, large rockets): ~20m lethal range
+// Determine lethal distance based on explosion size
+private _lethalDistance = 5;
 
-private _lethalDistance = 0;
-
-// Determine explosion size based on damage dealt
-// Higher base damage = larger explosion
 if (_damage > 0.7) then {
-    // Large explosion
-    _lethalDistance = 20;
+    _lethalDistance = 20;  // Large explosion (artillery, large bombs)
 } else {
     if (_damage > 0.4) then {
-        // Medium explosion
-        _lethalDistance = 10;
-    } else {
-        // Small explosion
-        _lethalDistance = 5;
+        _lethalDistance = 10;  // Medium explosion (grenades, small rockets)
     };
 };
 
 // Check if within lethal distance
 if (_distance <= _lethalDistance) then {
-    // Set cardiac arrest via ACE medical
+    // Kill unit after short delay to let ACE process
     [{
         params ["_unit"];
-        [_unit, true] call ace_medical_fnc_setCardiacArrestState;
-
-        // Also apply massive damage to ensure death
-        _unit setDamage 1;
+        if (alive _unit) then {
+            [_unit, true] call ace_medical_fnc_setCardiacArrestState;
+            _unit setDamage 1;
+        };
     }, [_unit], 0.1] call CBA_fnc_waitAndExecute;
-} else {
-    // Apply scaling damage based on distance beyond lethal range
-    private _damageMultiplier = 1 - ((_distance - _lethalDistance) / _lethalDistance);
-    _damageMultiplier = _damageMultiplier max 0;
-
-    if (_damageMultiplier > 0) then {
-        [{
-            params ["_unit", "_mult"];
-            private _currentDamage = damage _unit;
-            _unit setDamage (_currentDamage + (0.5 * _mult));
-        }, [_unit, _damageMultiplier], 0.1] call CBA_fnc_waitAndExecute;
-    };
 };

@@ -6,37 +6,22 @@ echo.
 
 REM Check if HEMTT exists
 if not exist "%~dp0hemtt.exe" (
-    echo HEMTT not found. Downloading latest version...
+    echo HEMTT not found!
     echo.
-
-    REM Try to download using PowerShell
-    powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $releases = Invoke-RestMethod -Uri 'https://api.github.com/repos/BrettMayson/HEMTT/releases/latest'; $asset = $releases.assets | Where-Object { $_.name -like '*windows-x64.exe' }; Invoke-WebRequest -Uri $asset.browser_download_url -OutFile 'hemtt.exe'}"
-
-    if %ERRORLEVEL% NEQ 0 (
-        echo.
-        echo ========================================
-        echo ERROR: Could not download HEMTT!
-        echo ========================================
-        echo.
-        echo Please manually download HEMTT from:
-        echo https://github.com/BrettMayson/HEMTT/releases
-        echo.
-        echo Download the Windows x64 .exe file and rename it to hemtt.exe
-        echo Place it in this folder: %~dp0
-        echo.
-        pause
-        exit /b 1
-    )
-
-    echo HEMTT downloaded successfully!
+    echo Please download HEMTT manually:
+    echo https://github.com/BrettMayson/HEMTT/releases/download/v1.17.2/windows-x64.zip
     echo.
+    echo Extract it, rename to hemtt.exe, and place in this folder.
+    echo.
+    pause
+    exit /b 1
 )
 
 echo Building with HEMTT...
 echo.
 
-REM Run HEMTT build
-"%~dp0hemtt.exe" build --release
+REM Run HEMTT release
+"%~dp0hemtt.exe" release
 
 if %ERRORLEVEL% EQU 0 (
     echo.
@@ -44,20 +29,22 @@ if %ERRORLEVEL% EQU 0 (
     echo SUCCESS! Mod built successfully!
     echo ========================================
     echo.
-    echo Your mod is ready in the releases folder!
-    echo Output: releases\@ACE_Damage_Modifier
+    echo Your mod is ready in: releases\@ACE_Damage_Modifier
+    echo.
+    echo IMPORTANT: The folder has @@ (double @) but you need single @
+    echo Rename it to @ACE_Damage_Modifier before copying to Arma 3!
     echo.
     echo Next steps:
-    echo 1. Test the mod in Arma 3
-    echo 2. Upload to Steam Workshop (see HEMTT_STEAM_GUIDE.txt)
+    echo 1. Copy releases\@ACE_Damage_Modifier to your Arma 3 folder
+    echo 2. Enable in launcher
+    echo 3. DISABLE: ACE Armor Adjuster and Armor System mods
+    echo 4. Test in-game!
     echo.
 ) else (
     echo.
     echo ========================================
     echo ERROR! Build failed!
     echo ========================================
-    echo.
-    echo Check the error messages above.
     echo.
 )
 

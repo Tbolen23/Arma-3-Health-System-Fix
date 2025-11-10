@@ -1,5 +1,5 @@
 /*
- * Author: Custom
+ * Author: Tbolen23
  * Handles damage to implement custom damage system
  * AI: 3 hits to chest/limbs = kill, 1 hit to head = kill
  * Players: 6 hits to chest/legs = kill, 2 hits to head = kill
@@ -32,8 +32,8 @@ if (!alive _unit) exitWith {_damage};
 private _isPlayer = isPlayer _unit;
 
 // Set thresholds based on unit type
-private _headThreshold = if (_isPlayer) then {2} else {1};
-private _bodyThreshold = if (_isPlayer) then {6} else {3};
+private _headThreshold = [1, 2] select _isPlayer;
+private _bodyThreshold = [3, 6] select _isPlayer;
 
 // Check for head hit
 if (_selection in ["head", "face"] || {_hitPoint in ["hithead", "hitface"]}) exitWith {
@@ -53,7 +53,7 @@ if (_selection in ["head", "face"] || {_hitPoint in ["hithead", "hitface"]}) exi
     };
 };
 
-// Check for chest/torso/limb hit (body and legs for AI, chest and legs for players)
+// Check for chest/torso/limb hit
 private _isBodyHit = _selection in ["body", "chest", "spine1", "spine2", "spine3", "leg_l", "leg_r", "hand_l", "hand_r"] ||
                      {_hitPoint in ["hitbody", "hitchest", "hitdiaphragm", "hitlegs", "hitleftleg", "hitrightleg", "hitarms", "hitleftarm", "hitrightarm"]};
 

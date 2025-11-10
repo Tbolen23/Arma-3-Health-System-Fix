@@ -7,9 +7,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = 1.0;
         requiredAddons[] = {"cba_main", "ace_medical", "ace_medical_damage"};
-        version = "2.0.1";
-        versionStr = "2.0.1";
-        versionAr[] = {2,0,1};
+        version = "2.0.2";
+        versionStr = "2.0.2";
+        versionAr[] = {2,0,2};
     };
 };
 
