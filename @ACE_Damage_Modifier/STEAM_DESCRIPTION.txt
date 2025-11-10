@@ -1,17 +1,20 @@
 [h1]ACE Damage Modifier[/h1]
 
-A lethal combat enhancement mod that works seamlessly with ACE Medical to create a more realistic and deadly battlefield experience.
+A balanced combat enhancement mod that works with ACE Medical to create more lethal AI combat while keeping players viable with medic support.
 
 [h2]Key Features[/h2]
 
-[b]🎯 Headshots Matter[/b]
-One hit to the head = instant death. Any bullet that strikes the head or face will immediately trigger cardiac arrest through ACE Medical.
+[b]🤖 AI Combat System[/b]
+One hit to the head = instant death for AI. Three hits to chest or limbs = death. AI combat is fast and lethal.
 
-[b]🫀 Cumulative Chest Damage[/b]
-Three hits to the chest or torso = death. The mod silently tracks damage to your torso - after the third hit, you're down. No second chances.
+[b]👤 Player Combat System[/b]
+Two hits to the head = death for players (more forgiving). Six hits to chest or legs = death (allows for intense firefights).
+
+[b]💊 Healing Resets Counters[/b]
+THIS IS THE GAME CHANGER: When you receive ACE Medical treatment, your damage counters reset! Medics are now crucial for survival. Team gameplay is rewarded.
 
 [b]💥 Realistic Explosion Lethality[/b]
-Explosions now have distance-based lethality that scales with their size:
+Explosions affect everyone equally with distance-based lethality:
 [list]
 [*]Small explosions (grenades): ~5m lethal radius
 [*]Medium explosions (RPG, small rockets): ~10m lethal radius
@@ -20,7 +23,17 @@ Explosions now have distance-based lethality that scales with their size:
 
 [h2]Why This Mod?[/h2]
 
-ACE Medical is fantastic, but sometimes you want combat to be more lethal and decisive. This mod enhances ACE's damage system without replacing it, making firefights faster and more intense.
+Most damage mods treat players and AI the same, leading to either:
+1. AI that takes too long to kill (boring)
+2. Players that die instantly (frustrating)
+
+This mod gives you the best of both worlds:
+[list]
+[*]AI goes down quickly (3 hits vs 6 for players)
+[*]Players have more survivability (6 hits vs 3 for AI)
+[*]Medics actually matter (healing resets counters)
+[*]Teamwork is rewarded (stay with your medic!)
+[/list]
 
 [b]Silent Operation[/b] - No notifications, no UI clutter. The mod works invisibly in the background for maximum immersion.
 
@@ -42,14 +55,36 @@ ACE Medical is fantastic, but sometimes you want combat to be more lethal and de
 
 [h2]How It Works[/h2]
 
-The mod uses event handlers to track damage to specific body parts. When lethal thresholds are reached, it triggers ACE Medical's cardiac arrest state. All tracking is done per-player and resets on respawn.
+The mod uses event handlers to track damage to specific body parts. Different thresholds apply based on whether the unit is a player or AI. When healing occurs, player counters reset.
 
 [b]Technical Details:[/b]
 [list]
 [*]Uses HandleDamage event for bullet/projectile tracking
 [*]Uses Explosion event for blast damage
-[*]Hit counters stored in player variables
-[*]Fully compatible with ACE Advanced Medical
+[*]Listens to ACE Medical treatment events
+[*]Hit counters stored per-unit
+[*]Healing resets player counters only
+[*]AI gets 1 head/3 body thresholds
+[*]Players get 2 head/6 body thresholds
+[/list]
+
+[h2]Gameplay Impact[/h2]
+
+[b]For Players:[/b]
+[list]
+[*]You can survive longer firefights
+[*]Getting medical treatment is CRITICAL
+[*]Stick with your squad's medic
+[*]You can take 6 body shots before going down
+[*]Headshots are dangerous but not instant death
+[/list]
+
+[b]For AI:[/b]
+[list]
+[*]AI combat resolves faster
+[*]3 shots to down an enemy
+[*]Headshots are instant kills
+[*]Makes AI feel more "killable" without being trivial
 [/list]
 
 [h2]Compatibility[/h2]
@@ -57,15 +92,17 @@ The mod uses event handlers to track damage to specific body parts. When lethal 
 ✅ Works with ACE Medical and Advanced Medical
 ✅ Compatible with most weapon and gameplay mods
 ✅ Works in singleplayer and multiplayer
-✅ Server-side compatible (clients should install for best experience)
+✅ Server and client compatible
+✅ All units in mission are affected
 ⚠️ May conflict with other damage modification mods
 
 [h2]Configuration[/h2]
 
-Currently uses hardcoded values:
+Currently uses these values:
 [list]
-[*]3 chest hits = death
-[*]1 head hit = death
+[*]AI: 3 chest/limb hits = death, 1 head hit = death
+[*]Players: 6 chest/leg hits = death, 2 head hits = death
+[*]Healing resets player counters
 [*]Explosion lethal ranges: 5m/10m/20m
 [/list]
 
@@ -76,6 +113,7 @@ For custom values, edit the source files (see GitHub).
 [list]
 [*]ACE Team for ACE Medical
 [*]CBA Team for Community Base Addons
+[*]Tbolen23 for development
 [/list]
 
 [h2]Links[/h2]
@@ -91,4 +129,4 @@ If you encounter issues:
 3. Look for errors in your .rpt file
 4. Report issues on GitHub with your .rpt file
 
-Enjoy more lethal combat!
+Enjoy tactical combat with meaningful medic gameplay!

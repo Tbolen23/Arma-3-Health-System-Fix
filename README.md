@@ -4,23 +4,26 @@ A custom Arma 3 mod that modifies ACE Medical damage behavior to create a more l
 
 ## Features
 
-### 🎯 Head Shots
+### 🤖 AI Damage System
 - **1 hit to the head = instant death**
-- Applies to any head or face hit
-- Triggers immediate cardiac arrest via ACE Medical
+- **3 hits to chest/limbs = death**
+- Applies to all non-player units
+- Tracks cumulative damage silently
 
-### 🫀 Chest Shots
-- **3 hits to the chest/torso = death**
-- Tracks cumulative chest damage silently
-- Triggers cardiac arrest after 3rd hit
+### 👤 Player Damage System
+- **2 hits to the head = death** (more forgiving than AI)
+- **6 hits to chest/legs = death** (allows for extended firefights)
+- Tracks cumulative damage silently
+- **Healing resets counters** - Medic gameplay is viable and encouraged
 - No in-game notifications (clean gameplay)
 
-### 💥 Explosion Damage
+### 💥 Explosion Damage (Same for All)
 Distance-based lethality that varies by explosion size:
 - **Small explosions** (grenades): ~5m lethal range
 - **Medium explosions** (RPG, small rockets): ~10m lethal range
 - **Large explosions** (bombs, large rockets): ~20m lethal range
 - Scaling damage beyond lethal range
+- Applies equally to players and AI
 
 ## Requirements
 
@@ -58,25 +61,34 @@ See `@ACE_Damage_Modifier/WORKSHOP_GUIDE.txt` for detailed instructions on uploa
 The mod uses event handlers to track damage to specific body parts:
 - `HandleDamage` event tracks bullet/projectile hits
 - `Explosion` event handles blast damage
-- Hit counters are stored per-player and reset on respawn
+- Hit counters are stored per-unit and reset on respawn
+- **For players: Healing via ACE Medical resets hit counters**
+- Different thresholds for players vs AI
 
 ### ACE Medical Integration
 - Uses `ace_medical_fnc_setCardiacArrestState` for lethal hits
 - Compatible with ACE medical settings
 - Works with ACE's advanced medical system
+- **Healing events reset player damage counters** for viable medic gameplay
 - Silent operation - no in-game notifications for clean immersive gameplay
+- Applies to all units in the mission (players and AI)
 
 ## Configuration
 
 The mod currently uses hardcoded values. To customize:
 
 Edit `addons/ace_damage_mod/functions/fn_handleDamage.sqf`:
-- Change chest hit threshold (default: 3)
+- AI thresholds: 1 head hit, 3 chest/limb hits
+- Player thresholds: 2 head hits, 6 chest/leg hits
 - Modify damage multipliers
 
 Edit `addons/ace_damage_mod/functions/fn_handleExplosion.sqf`:
 - Adjust lethal distances for each explosion size
 - Modify explosion size thresholds
+
+Edit `addons/ace_damage_mod/functions/fn_init.sqf`:
+- Modify healing reset behavior
+- Change which units are affected
 
 ## Building the PBO
 
@@ -154,6 +166,16 @@ This mod is ready for Steam Workshop! See the complete upload guide:
 - `@ACE_Damage_Modifier/meta.cpp` - Steam Workshop metadata
 
 ## Version History
+
+### 2.0.0 (Current)
+- Separate damage thresholds for AI vs Players
+- AI: 1 head hit, 3 chest/limb hits
+- Players: 2 head hits, 6 chest/leg hits
+- Healing resets player damage counters
+- Applies to all units (players and AI)
+- Distance-based explosion lethality (same for all)
+- ACE Medical integration
+- Silent operation (no notifications)
 
 ### 1.0.0 (Initial Release)
 - Head shot kills (1 hit)
