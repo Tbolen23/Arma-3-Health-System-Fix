@@ -1,15 +1,15 @@
 class CfgPatches {
     class ace_damage_mod {
         name = "ACE Damage Modifier";
-        author = "Custom";
+        author = "Tbolen23";
         url = "";
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.0;
         requiredAddons[] = {"ace_medical", "ace_medical_damage"};
-        version = "1.0.0";
-        versionStr = "1.0.0";
-        versionAr[] = {1,0,0};
+        version = "2.0.0";
+        versionStr = "2.0.0";
+        versionAr[] = {2,0,0};
     };
 };
 
