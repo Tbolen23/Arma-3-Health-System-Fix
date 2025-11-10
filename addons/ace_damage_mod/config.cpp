@@ -17,7 +17,7 @@ class CfgFunctions {
     class ace_damage_mod {
         tag = "ace_dmg";
         class functions {
-            file = "\addons\ace_damage_mod\functions";
+            file = "\z\ace_dmg\addons\ace_damage_mod\functions";
             class init {
                 postInit = 1;
             };
