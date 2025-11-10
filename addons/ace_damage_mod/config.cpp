@@ -7,9 +7,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = 1.0;
         requiredAddons[] = {"ace_medical", "ace_medical_damage"};
-        version = "2.0.0";
-        versionStr = "2.0.0";
-        versionAr[] = {2,0,0};
+        version = "2.0.1";
+        versionStr = "2.0.1";
+        versionAr[] = {2,0,1};
     };
 };
 
@@ -17,7 +17,7 @@ class CfgFunctions {
     class ace_damage_mod {
         tag = "ace_dmg";
         class functions {
-            file = "\addons\ace_damage_mod\functions";
+            file = "\z\ace_dmg\addons\ace_damage_mod\functions";
             class init {
                 postInit = 1;
             };
