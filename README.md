@@ -167,7 +167,13 @@ This mod is ready for Steam Workshop! See the complete upload guide:
 
 ## Version History
 
-### 2.0.0 (Current)
+### 2.0.1 (Current)
+- Fixed file paths to match Arma 3 standards
+- Updated $PBOPREFIX$ to use z\ namespace prefix
+- Fixed config.cpp file paths to match PBO prefix
+- Follows LambsDanger mod structure for compatibility
+
+### 2.0.0
 - Separate damage thresholds for AI vs Players
 - AI: 1 head hit, 3 chest/limb hits
 - Players: 2 head hits, 6 chest/leg hits
