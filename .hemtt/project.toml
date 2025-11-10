@@ -2,10 +2,23 @@ name = "ACE Damage Modifier"
 prefix = "ace_dmg"
 mainprefix = "z"
 author = "Tbolen23"
-version = "2.0.1"
+
+[version]
+major = 2
+minor = 0
+patch = 1
+build = 0
+
+[files]
+include = [
+    "mod.cpp",
+    "README.txt",
+    "*.md"
+]
 
 [hemtt.release]
 sign = false
+folder = "ACE_Damage_Modifier"
 
 [hemtt.build]
 # Build configuration
