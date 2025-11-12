@@ -1,32 +1,29 @@
 # Quick Start Guide
 
-## Step 1: Download HEMTT
+## Step 1: Build the Mod
 
-Download: https://github.com/BrettMayson/HEMTT/releases/download/v1.17.2/windows-x64.zip
+**Just double-click `build_hemtt.bat`** - That's it!
 
-1. Extract the zip file
-2. Rename `windows-x64.exe` to `hemtt.exe`
-3. Place it in this folder (same location as `build_hemtt.bat`)
-
-## Step 2: Build the Mod
-
-Double-click `build_hemtt.bat`
+The script will:
+- ✅ Automatically download HEMTT if needed (first time only)
+- ✅ Build your mod
+- ✅ Show you where the mod is ready
 
 You should see:
+- "Downloading HEMTT..." (first time only)
 - "Config loaded for ACE Damage Modifier"
 - "Built 1 PBOs"
 - "SUCCESS! Mod built successfully!"
 
-## Step 3: Install to Arma 3
+## Step 2: Install to Arma 3
 
 1. Open `releases\` folder
-2. Rename `@@ACE_Damage_Modifier` to `@ACE_Damage_Modifier` (single @)
-3. Copy `@ACE_Damage_Modifier` folder to:
+2. Copy `@ACE_Damage_Modifier` folder to:
    ```
    C:\Program Files (x86)\Steam\steamapps\common\Arma 3\
    ```
 
-## Step 4: Configure Launcher
+## Step 3: Configure Launcher
 
 1. Open Arma 3 Launcher
 2. MODS tab
@@ -39,7 +36,7 @@ You should see:
    - ✅ ACE Damage Modifier (your new mod!)
 5. Click PLAY
 
-## Step 5: Test
+## Step 4: Test
 
 1. Editor → Place enemy AI
 2. Shoot AI 3 times in chest → Should die
