@@ -1,17 +1,12 @@
 /*
+ * ACE Damage Modifier - Explosion Handler
  * Author: Tbolen23
+ *
  * Handles explosion damage with distance-based lethality
  * Same for both AI and players
  *
- * Arguments:
- * 0: Unit <OBJECT>
- * 1: Damage <NUMBER>
- * 2: Distance <NUMBER> - Distance from explosion
- *
- * Return Value:
- * None
- *
- * Public: No
+ * This is called automatically by the Explosion event handler
+ * DO NOT call this directly!
  */
 
 params ["_unit", "_damage", "_distance"];
