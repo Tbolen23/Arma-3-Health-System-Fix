@@ -1,23 +1,13 @@
 /*
+ * ACE Damage Modifier - Damage Handler
  * Author: Tbolen23
- * Handles damage to implement custom damage system
- * AI: 3 hits to chest/limbs = kill, 1 hit to head = kill
- * Players: 6 hits to chest/legs = kill, 2 hits to head = kill
  *
- * Arguments:
- * 0: Unit <OBJECT>
- * 1: Selection <STRING>
- * 2: Damage <NUMBER>
- * 3: Source <OBJECT>
- * 4: Projectile <STRING>
- * 5: HitPartIndex <NUMBER>
- * 6: Instigator <OBJECT>
- * 7: HitPoint <STRING>
+ * Handles damage for custom hit counting system
+ * AI: 3 chest/limb hits OR 1 head hit = death
+ * Players: 6 chest/leg hits OR 2 head hits = death
  *
- * Return Value:
- * Damage to apply <NUMBER>
- *
- * Public: No
+ * This is called automatically by the HandleDamage event handler
+ * DO NOT call this directly!
  */
 
 params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitPartIndex", "_instigator", "_hitPoint"];

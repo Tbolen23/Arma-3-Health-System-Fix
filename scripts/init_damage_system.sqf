@@ -1,15 +1,20 @@
 /*
+ * ACE Damage Modifier - Initialization Script
  * Author: Tbolen23
- * Initializes the ACE Damage Modifier system
- * Sets up damage tracking for all units (AI and players)
  *
- * Arguments: None
- * Return Value: None
- * Public: No
+ * This script sets up the damage tracking system for all units in the mission
+ * Call this from your mission's init.sqf or place it in the mission folder
+ *
+ * Features:
+ * - AI: 3 chest/limb hits OR 1 head hit = death
+ * - Players: 6 chest/leg hits OR 2 head hits = death
+ * - Healing resets player damage counters
+ * - Distance-based explosion lethality
+ * - Works with Zeus/dynamically spawned units
  */
 
-// Function to initialize a unit with damage tracking
-ace_dmg_fnc_initUnit = {
+// Function to initialize a single unit
+ACE_DMG_fnc_initUnit = {
     params ["_unit"];
 
     // Skip if already initialized
@@ -22,12 +27,12 @@ ace_dmg_fnc_initUnit = {
 
     // Add damage handler
     _unit addEventHandler ["HandleDamage", {
-        _this call ace_dmg_fnc_handleDamage
+        _this call compile preprocessFileLineNumbers "scripts\damage_handler.sqf"
     }];
 
     // Add explosion handler
     _unit addEventHandler ["Explosion", {
-        _this call ace_dmg_fnc_handleExplosion
+        _this call compile preprocessFileLineNumbers "scripts\explosion_handler.sqf"
     }];
 
     // For players: Add ACE medical treatment event to reset counters
@@ -42,7 +47,7 @@ ace_dmg_fnc_initUnit = {
 
 // Initialize all existing units
 {
-    [_x] call ace_dmg_fnc_initUnit;
+    [_x] call ACE_DMG_fnc_initUnit;
 } forEach allUnits;
 
 // Handle units that spawn during mission (Zeus, scripts, etc)
@@ -52,7 +57,12 @@ ace_dmg_fnc_initUnit = {
     [{
         params ["_unit"];
         if (alive _unit && !isNull _unit) then {
-            [_unit] call ace_dmg_fnc_initUnit;
+            [_unit] call ACE_DMG_fnc_initUnit;
         };
     }, [_unit], 0.5] call CBA_fnc_waitAndExecute;
 }, true, [], true] call CBA_fnc_addClassEventHandler;
+
+// Confirmation message (optional - can be removed)
+if (hasInterface) then {
+    systemChat "ACE Damage Modifier loaded - AI: 3/1 hits, Players: 6/2 hits";
+};

@@ -1,0 +1,27 @@
+/*
+ * Mission description.ext
+ *
+ * This is an EXAMPLE description.ext file
+ * Copy this to your mission folder and modify as needed
+ */
+
+// Mission settings
+author = "Your Name";
+onLoadName = "Your Mission Name";
+onLoadMission = "Mission description";
+
+// ACE Medical Settings (required for damage system to work properly)
+class CfgSettings {
+    class CBA {
+        class Versioning {
+            class MyMission {
+                class dependencies {
+                    CBA[] = {"cba_main", {3,15,6}, "(true)"};
+                    ACE[] = {"ace_main", {3,15,0}, "(true)"};
+                };
+            };
+        };
+    };
+};
+
+// Your other mission settings...
