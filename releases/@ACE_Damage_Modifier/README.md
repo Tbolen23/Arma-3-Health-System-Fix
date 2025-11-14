@@ -1,6 +1,6 @@
-# ACE Damage Modifier
+# ACE Damage Modifier - Mission Scripts
 
-Balanced damage system for Arma 3 with ACE Medical. Available as both a **mod** and **mission scripts**.
+Simple drop-in scripts for Arma 3 missions that modify ACE Medical damage thresholds.
 
 ## Quick Overview
 
@@ -12,27 +12,16 @@ Balanced damage system for Arma 3 with ACE Medical. Available as both a **mod** 
 
 ---
 
-## Two Ways to Use
+## Installation (30 seconds)
 
-### Option 1: Pre-Built Mod (Easiest!)
+1. **Copy** the `scripts` folder to your mission folder
+2. **Add** this line to your `init.sqf`:
+   ```sqf
+   [] execVM "scripts\init_damage_system.sqf";
+   ```
+3. **Done!** Load your mission and test
 
-**No building required!** Just download and use.
-
-1. Copy `releases/@ACE_Damage_Modifier` to your Arma 3 folder
-2. Enable in launcher
-3. Done!
-
-📖 **See [MOD_INSTALLATION.md](MOD_INSTALLATION.md) for details**
-
-### Option 2: Mission Scripts
-
-Drop scripts into specific missions only.
-
-1. Copy `scripts` folder to your mission
-2. Add one line to `init.sqf`
-3. Done!
-
-📖 **See [INSTALLATION.md](INSTALLATION.md) for details**
+📖 **See [INSTALLATION.md](INSTALLATION.md) for detailed instructions**
 
 ---
 

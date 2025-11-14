@@ -1,0 +1,9 @@
+# HEMTT binary
+hemtt
+hemtt.exe
+
+# HEMTT build artifacts
+.hemttout/
+
+# Don't ignore releases/ - we want to commit the pre-built mod!
+# releases/

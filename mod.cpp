@@ -1,0 +1,12 @@
+name = "ACE Damage Modifier";
+picture = "";
+actionName = "Website";
+action = "";
+description = "Balanced damage system for ACE Medical. AI: 1 head/3 body hits. Players: 2 head/6 body hits. Healing resets counters.";
+logo = "";
+logoOver = "";
+tooltip = "ACE Damage Modifier";
+tooltipOwned = "ACE Damage Modifier Owned";
+overview = "Modifies ACE Medical damage thresholds for balanced gameplay with separate AI/Player settings.";
+author = "Tbolen23";
+overviewPicture = "";
